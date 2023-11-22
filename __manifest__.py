@@ -10,9 +10,10 @@
     'description': """
         Allow clients to Schedule Appointments through the Portal
     """,
-    'depends': [],
+    'depends': [base],
     'data': [ ],
     'installable': True,
     'application': True,
 
 }
+
