@@ -1,4 +1,4 @@
-from odoo import models
+from odoo import models, Command
 
 class InheritedModel(models.Model):
     _inherit = "estate.property"
@@ -20,18 +20,36 @@ class InheritedModel(models.Model):
                     "partner_id": line.buyer_id.id,
                     "move_type": "out_invoice",
                     "journal_id": journal.id,
-                    
+                    # TO CREATE AN INVOICE LINE, we need to link it to an invoce as well.
+                        # WE NEED
+                            # name: a description of the line
+                            # quantity
+                            # price_unit
+                    "invoice_line_ids": [
+                        (
+                            0, #The 0 is the Create method, CREATE = 0.
+                            0,
+                            {
+                                "name": line.name,
+                                "quantity": 1.0,
+                                "price_unit": line.selling_price * 6.0 / 100, #Here each property will be invoiced 6% of the selling price.
+                            },
+                        ),
+                        (
+                            0,
+                            0,
+                            {
+                                "name": "Administrative Fees",
+                                "quantity": 1.0,
+                                "price_unit": 100.0,
+                            },
+                        ),
+                    ],
                 }
             )
 
         return res
 
-
-# TO CREATE AN INVOICE LINE, we need to link it to an invoce as well.
-    # WE NEED
-        # name: a description of the line
-        # quantity
-        # price_unit
 
 
 
