@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="test_res_users" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.estate</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/> <!-- Here is where we apply the inherit_id field -->
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="estate_properties" string="Estate Properties">
+                    <field name="property_ids"/> <!-- Here call the property_ids field in the res_users.py -->
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
+<!-- This view will be visible in the settings app, users & companies, ... -->
