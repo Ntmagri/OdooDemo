@@ -41,7 +41,7 @@ class InheritedModel(models.Model):
                             {
                                 "name": "Administrative Fees",
                                 "quantity": 1.0,
-                                "price_unit": 100.0,
+                                "price_unit": 100.0, #Here we are charging for $100 fee as well.
                             },
                         ),
                     ],
