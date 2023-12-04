@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <odoo>
+
     <record id="test_model_action" model="ir.actions.act_window"> <!--This ID will be related to estate_menus action -->
         <field name="name">Properties</field>
         <field name="res_model">estate.property</field> <!-- This estate.property is related to the model name (__name) -->
-        <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_available': 1}</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{'search_default_available': 1}</field> <!-- The 1 means if I type 1 in the search bar it will show all the options that can be chose.-->
     </record>
 
     <record id="estate_property_view_tree" model="ir.ui.view">
@@ -98,7 +99,7 @@
                 <field name="postcode"/>
                 <field name="expected_price"/>
                 <field name="bedrooms"/>
-                <field name="living_area" filter_domain="[('living_area', '>=', self)]"/> <!-- The filter domain will make the search default (line 7) works for it. -->
+                <field name="living_area" filter_domain="[('living_area', '>=', self)]"/> <!-- The filter domain will make the search default (line 7) works for it. Also, it will show the living area that are higher or equal the one you searched about  -->
                 <field name="facades"/>
                 <filter string="Available" name="available" domain="['|',('state', '=', 'new'),('state', '=','offer_received')]"/>
                 <separator/>
@@ -109,4 +110,39 @@
         </field>
     </record>
 
+    <record id="estate_property_view_kanban" model="ir.ui.view"> <!-- Don't forget to use the kanban in the view mode line 7 of the code. -->
+        <field name="name">estate.property.view.kanban</field> 
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="property_type_id" records_draggable="0"> <!-- Here we are grouping the appropriate properties by the type_id. And we are preventing from dragging and dropping it. -->
+                <field name="state"/> <!-- Whenever is declared outside of the template it's because we need the value but we don't wnat to display it in the view. -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div>
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                            <div>
+                                Expected Price: <field name="expected_price" /> <!-- This will add the expected price below the name of the property in the view. -->
+                            </div>
+                            <div t-if="record.state.raw_value == 'offer_received'">
+                                Best Offer: <field name="best_price"/> <!-- Here it's only show the best price whenever an offer is received, if it's offer accepted or anything else it will not show up the best offer. -->
+                            </div>
+                            <div t-if="record.state.raw_value == 'offer_accepted'">
+                                Selling Price: <field name="selling_price"/>
+                            </div>
+                            <div> <!-- the tag field it's not necessary be inside of a div but just to style all the same I put it inside of a div. -->
+                                <field name="property_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/> <!-- Here we are adding the tags to it, and the color of the tag as well. -->
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    
+    
 </odoo>
