@@ -117,7 +117,7 @@ class EstateProperty(models.Model):
                     "Therefore, he must increase his offer or you must reduce the expected price."
                 )
 
-
+     
     #========================================================================================================
     #CRUD METHOD
             # Always call super(), Ex: return super().create(vals)
