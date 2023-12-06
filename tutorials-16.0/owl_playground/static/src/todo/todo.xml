@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="owl_playground.Todo" owl="1">
+        <!-- Here we are making a codition where if the props is done then do the decoration and muted and if not dont do it.-->
+        <p t-att-class="props.done ? 'text-decoration-line-through text-muted : '' "> <!-- Ternary Operator -->
+            <!-- Here we are declaring the id and description which will be used and defined the values in the playground.js and in the playground.xml file. -->
+            <t t-esc="props.id"/>
+            <t t-esc="props.description"/>
+        </p>
+    </t>
+
+</templates>

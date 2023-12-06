@@ -60,10 +60,7 @@
                 <field name="name"/>
             </search>
         </field>
-    </record>
-
-    
-
+    </record>    
 
 </odoo>
 

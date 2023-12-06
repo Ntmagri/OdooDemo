@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="owl_playground.playground" owl="1">
+        <div class="p-3">
+            hello world
+            <!-- Here we are taking the defined state value that we declared in .js file = 1 and printing it.
+            <p>Counter: <t t-esc="state.value"/></p> -->
+            <!-- Here we created the increment button that whenever we click on it calls the increment function that will change the state value that it's 1 and add 1 to it.  -->
+            <!-- <button class="btn btn-primary" t-on-click="increment">increment</button>  -->
+            
+            <!-- Here we just need to import the counter file as well as we have defined the p tag and button over there, we do not need declare it twice. -->
+            <Counter/>
+            <TodoList/>
+            <!-- As we are importing the for each already from the TodoList we do not need the code line below anymore. -->
+            <!-- <Todo id="todo.id" description="todo.description" done="todo.done"/> -->
+
+        </div>
+    </t>
+
+</templates>

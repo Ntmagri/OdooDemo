@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="owl_playground.Counter" owl="1">
+        <!-- t-esc also is used to whenever you want to add a dynamic text expression in a template. -->
+        <p>Counter: <t t-esc="state.value"/></p> <!-- t-esc will literally print out the value from the field you want to print. -->
+        <button class="btn btn-primary" t-on-click="increment">Increment</button>
+    </t>
+</templates>
