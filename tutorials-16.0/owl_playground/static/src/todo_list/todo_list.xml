@@ -2,10 +2,13 @@
 <templates xml:space="preserve">
     <t t-name="owl_playground.TodoList" owl="1"> <!-- Here we are calling and connecting with the todo_list.js file of it. -->
         <div class="bg-white border border-primary rounded mt-3 p-3">
-            <input class="form-control mb-3" type="text" placeholder="Add a todo" t-on-keyup="addTodo"/> <!-- Here is the input field for the dynamically todo, where the t-on-keyup call the addTodo Functionality from the .js file. -->
+            <!-- Here is the input field for the dynamically todo, where the t-on-keyup call the addTodo Functionality from the .js file. -->
+            <!-- THe t-ref tag it's calling the useAutofocus("todoListInput"); from todo_list.js -->
+            <input class="form-control mb-3" type="text" placeholder="Add a todo" t-on-keyup="addTodo" t-ref="todoListInput"/> 
             <t t-foreach="todoList" t-as="todo" t-key="todo.id"> <!-- This foreach declaration calls the array of .js file -->
                 <Todo id="todo.id" description="todo.description" done="todo.done"/> <!-- Here call the elements inside of the array, if the right validation, Todo.js -->
             </t>
         </div>
     </t>
 </templates>
+

@@ -2,6 +2,7 @@
 
 import { Todo } from "../todo/todo"; //Here we are calling the todo, where there is the props validation for the list.
 import { Component, useState } from "@odoo/owl"; // Imported the useState so we are able to do the todo list dynamically.
+import { useAutofocus } from "../utils";
 
 export class TodoList extends Component {
     setup(){
@@ -12,6 +13,7 @@ export class TodoList extends Component {
         // ];
         this.nextId = 0;
         this.todoList = useState([]);
+        useAutofocus("todoListInput"); //Here is calling the utils.js useAutoFocus function.
     }
 
     // Now we will modify it for adding a todo, where it will be dinamically modified the list, where the user will be able to add a todo.
