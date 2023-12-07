@@ -25,6 +25,15 @@ export class TodoList extends Component {
         }
     }
 
+    // Here we declaring a toggleTodo with a const where it searches for the id of the element, and create a if statement, to not be checked and being able to be checked.
+    // The Check part will be manipulated in the XML, where it will call this funcion and whenever this function is activated it will become a checked box insted not checked.
+    toggleTodo(todoId) {
+        const todo = this.todoList.find((todo) => todo.id === todoId);
+        if(todo){
+            todo.done = !todo.done;
+        }
+    }
+
 }
 
 

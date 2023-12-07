@@ -6,7 +6,8 @@
             <!-- THe t-ref tag it's calling the useAutofocus("todoListInput"); from todo_list.js -->
             <input class="form-control mb-3" type="text" placeholder="Add a todo" t-on-keyup="addTodo" t-ref="todoListInput"/> 
             <t t-foreach="todoList" t-as="todo" t-key="todo.id"> <!-- This foreach declaration calls the array of .js file -->
-                <Todo id="todo.id" description="todo.description" done="todo.done"/> <!-- Here call the elements inside of the array, if the right validation, Todo.js -->
+            <!-- the toggleState.bind="toggleTodo" is where we are vinculando the todo_list func (file) to todo files, where there is the onClick func. -->
+                <Todo id="todo.id" description="todo.description" done="todo.done" toggleState.bind="toggleTodo"/> <!-- Here call the elements inside of the array, if the right validation, Todo.js -->
             </t>
         </div>
     </t>
