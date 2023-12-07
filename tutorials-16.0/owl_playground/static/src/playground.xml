@@ -11,7 +11,14 @@
             
             <!-- Here we just need to import the counter file as well as we have defined the p tag and button over there, we do not need declare it twice. -->
             <Counter/>
+            
+            <Card>
+                <t t-set-slot="title">My Card </t>
+                The Company (It's an example).
+            </Card>
+
             <TodoList/>
+
             <!-- As we are importing the for each already from the TodoList we do not need the code line below anymore. -->
             <!-- <Todo id="todo.id" description="todo.description" done="todo.done"/> -->
 
