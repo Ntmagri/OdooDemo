@@ -15,6 +15,7 @@
                 <t t-esc="props.id"/>
                 <t t-esc="props.description"/>
             </label>
+            <span role="button" class="fa fa-remove ms-3 text-danger" t-on-click="onRemove"/>
         </div>
     </t>
 

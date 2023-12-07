@@ -34,8 +34,16 @@ export class TodoList extends Component {
         }
     }
 
-}
+    // Here we are finding the index of the element to delete.
+    // The slipce method will change the contests of the array by removing the item. 
+    removeTodo(todoId) {
+        const todoIndex = this.todoList.findIndex((todo) => todo.id === todoId);
+        if (todoIndex >= 0) {
+            this.todoList.splice(todoIndex, 1);
+        }
+    }
 
+}
 
 
 TodoList.components = { Todo }; // Here is to connect the list to be declared in the xml file. 
